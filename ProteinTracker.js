@@ -13,6 +13,17 @@ if (Meteor.isClient) {
        return History.find();
     }
   });
+
+  Template.userDetails.events({
+     'click #addAmount' : function(e) {
+        e.preventDefault();
+
+        var amount = parseInt($('#amounts').val());
+
+        Users.update(this._id, { $inc: { totals: amount }});
+     }
+  });
+
 }
 
 if (Meteor.isServer) {
@@ -22,7 +33,7 @@ if (Meteor.isServer) {
     if (Users.find().count() === 0 ) {
 
         Users.insert({
-            total: 120,
+            totals: 120,
             goal: 200
         });
     }
@@ -42,4 +53,6 @@ if (Meteor.isServer) {
         });
     }
   });
+
+
 }
