@@ -10,7 +10,7 @@ if (Meteor.isClient) {
 
   Template.history.helpers({
     historyItem: function() {
-       return History.find();
+       return History.find({}, {sort: { date: -1}, limit: 5});
     }
   });
 
@@ -21,7 +21,13 @@ if (Meteor.isClient) {
         var amount = parseInt($('#amounts').val());
 
         Users.update(this._id, { $inc: { totals: amount }});
+        History.insert({
+           value: amount,
+           date: new Date().toTimeString(),
+           userId: this._id
+        });
      }
+
   });
 
 }
