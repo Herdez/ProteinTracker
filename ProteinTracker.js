@@ -1,11 +1,10 @@
+Users = new Meteor.Collection('users');
+
+
 if (Meteor.isClient) {
   Template.userDetails.helpers({
     user: function() {
-       var user = {
-         total: 123,
-         goal: 251
-       };
-       return user;
+       return Users.findOne();
     }
   });
 
@@ -28,5 +27,13 @@ if (Meteor.isClient) {
 if (Meteor.isServer) {
   Meteor.startup(function () {
     // code to run on server at startup
+
+    if (Users.find().count() === 0 ) {
+
+        Users.insert({
+            total: 120,
+            goal: 200
+        });
+    }
   });
 }
