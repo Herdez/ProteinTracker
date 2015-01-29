@@ -2,6 +2,10 @@ Users = new Meteor.Collection('users');
 History = new Meteor.Collection('history');
 
 if (Meteor.isClient) {
+
+  Meteor.subscribe('allUsers');
+  Meteor.subscribe('allHistory');
+
   Template.userDetails.helpers({
     user: function() {
        return Users.findOne();
@@ -33,6 +37,15 @@ if (Meteor.isClient) {
 }
 
 if (Meteor.isServer) {
+
+  Meteor.publish('allUsers', function(){
+      return Users.find();
+  });
+
+  Meteor.publish('allHistory', function(){
+      return History.find();
+  });
+
   Meteor.startup(function () {
     // code to run on server at startup
 
