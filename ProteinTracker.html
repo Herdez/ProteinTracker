@@ -3,12 +3,15 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
+  <h1>Protein Tracker</h1>
+  <h2>Total: <span>100</span></h2>
+  <h2>Goal: <span>200</span></h2>
+  <h3>Enter amount:</h3>
+  <input id="amount" type="text"/>
+  <input id="addAmount" type="submit" value="Add Protein" />
 
-  {{> hello}}
+  <h2>Last 5 entries</h2>
+    <p>9/10/2013 11:37 AM - 20</p>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>
+
