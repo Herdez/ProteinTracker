@@ -71,6 +71,16 @@ if (Meteor.isServer) {
              date: new Date().toTimeString()
         });
     }
+
+    Accounts.loginServiceConfiguration.remove({
+  service: "google"
+});
+
+Accounts.loginServiceConfiguration.insert({
+  service: "google",
+  clientId: "431899020009-3a0p94g3tajooap37q4l5baecsdlj8jl.apps.googleusercontent.com",
+  secret: "aR6sQORJDhfSjI5cFE-CMvCI"
+});
   });
 
 
